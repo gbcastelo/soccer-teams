@@ -64,6 +64,39 @@ $(() => {
                             $('#content').html(response);
                         });
                     }, 3000);
+                    $.get("{{route('player.index')}}", (response) => {
+                        $("#main-table").show();
+                        $("#row-result").empty();
+                        for (const [index, value] of response.entries()) {
+                            if (value.goalkeeper == 1) {
+                                $("#row-result").append(
+                                    '<tr>' +
+                                        '<td class="pt-3" scope="row">' + (index + 1) + '</td>' +
+                                        '<td class="pt-3">' + value.name + ' (Goleiro)</td>' +
+                                        '<td class="pt-3">' + value.level + '</td>' +
+                                        '<td>' +
+                                            '<input id="hidden-id" type="hidden" value='+ value.id +'>' +
+                                            '<button id="button-edit" value='+ value.id +' type="button" class="btn btn-outline-dark w-button"><i class="fas fa-edit"></i></button>' +
+                                            '<button id="button-delete" value='+ value.id +' type="button" class="btn btn-outline-dark w-button"><i class="fas fa-trash-alt"></i></button>' +
+                                        '</td>' +
+                                    '</tr>'
+                                );
+                            } else {
+                                $("#row-result").append(
+                                    '<tr>' +
+                                        '<td class="pt-3" scope="row">' + (index + 1) + '</td>' +
+                                        '<td class="pt-3">' + value.name + '</td>' +
+                                        '<td class="pt-3">' + value.level + '</td>' +
+                                        '<td>' +
+                                            '<input id="hidden-id" type="hidden" value='+ value.id +'>' +
+                                            '<button id="button-edit" type="button" class="btn btn-outline-dark w-button"><i class="fas fa-edit"></i></button>' +
+                                            '<button id="button-delete" type="button" class="btn btn-outline-dark w-button"><i class="fas fa-trash-alt"></i></button>' +
+                                        '</td>' +
+                                    '</tr>'
+                                );
+                            }
+                        };
+                    });
                 } else {
                     $("#loading").hide();
                     $("#button-text").show();

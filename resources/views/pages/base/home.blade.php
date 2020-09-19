@@ -12,39 +12,17 @@
     </div>
 </div>
 <div class="container mt-5">
-    <table class="table table-hover">
-        <caption>O time que chegar a 100 pontos é o vencedor!</caption>
+    <table id="main-table" class="table table-hover">
+        <caption>O número máximo de jogadores é 25!</caption>
         <thead>
             <tr class="table-warning"></tr>
                 <th scope="col">#</th>
-                <th scope="col">Time</th>
-                <th scope="col">Último Jogo</th>
-                <th scope="col">Pontos</th>
+                <th scope="col">Jogador</th>
+                <th scope="col">Level</th>
                 <th scope="col">Ações</th>
             </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td scope="row">1</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <td scope="row">2</td>
-            <td>Jacob</td>
-            <td>tdornton</td>
-            <td>tdornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <td scope="row">3</td>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+        <tbody id="row-result">
         </tbody>
     </table>
 </div>
@@ -55,6 +33,41 @@ $(() => {
         $.get("{{route('player.create')}}", (response) => {
             $('#content').html(response);
         });
+    });
+    $.get("{{route('player.index')}}", (response) => {
+        if (response.length == 0) {
+            $("#main-table").hide();
+        } else {
+            for (const [index, value] of response.entries()) {
+                if (value.goalkeeper == 1) {
+                    $("#row-result").append(
+                        '<tr>' +
+                            '<td class="pt-3" scope="row">' + (index + 1) + '</td>' +
+                            '<td class="pt-3">' + value.name + ' (Goleiro)</td>' +
+                            '<td class="pt-3">' + value.level + '</td>' +
+                            '<td>' +
+                                '<input id="hidden-id" type="hidden" value='+ value.id +'>' +
+                                '<button id="button-edit" value='+ value.id +' type="button" class="btn btn-outline-dark w-button"><i class="fas fa-edit"></i></button>' +
+                                '<button id="button-delete" value='+ value.id +' type="button" class="btn btn-outline-dark w-button"><i class="fas fa-trash-alt"></i></button>' +
+                            '</td>' +
+                        '</tr>'
+                    );
+                } else {
+                    $("#row-result").append(
+                        '<tr>' +
+                            '<td class="pt-3" scope="row">' + (index + 1) + '</td>' +
+                            '<td class="pt-3">' + value.name + '</td>' +
+                            '<td class="pt-3">' + value.level + '</td>' +
+                            '<td>' +
+                                '<input id="hidden-id" type="hidden" value='+ value.id +'>' +
+                                '<button id="button-edit" type="button" class="btn btn-outline-dark w-button"><i class="fas fa-edit"></i></button>' +
+                                '<button id="button-delete" type="button" class="btn btn-outline-dark w-button"><i class="fas fa-trash-alt"></i></button>' +
+                            '</td>' +
+                        '</tr>'
+                    );
+                }
+            };
+        }
     });
 });
 </script>

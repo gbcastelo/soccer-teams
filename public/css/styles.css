@@ -25,3 +25,7 @@ caption {
     font-size: small;
     color: #00000080!important;
 }
+
+.w-button {
+    width: 2.5rem;
+}

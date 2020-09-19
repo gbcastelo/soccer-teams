@@ -14,7 +14,9 @@ class PlayerController extends Controller
      */
     public function index()
     {
-        //
+        $players = new Player;
+
+        return $players->all();
     }
 
     /**
