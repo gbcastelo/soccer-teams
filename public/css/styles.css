@@ -1,0 +1,27 @@
+body {
+    background-color: #ef9207d4!important;
+    font-family: 'Kufam', cursive!important;
+    color: black!important;
+    margin: 0;
+}
+
+.btn-link {
+    height: 20%;
+    color: inherit!important;
+}
+
+.table th {
+    border-top: 2px solid black!important;
+    border-bottom: 2px solid black!important;
+    background-color: #ffc107!important;
+}
+
+.table td {
+    border-top: 1px solid black!important;
+    border-bottom: 1px solid black!important;
+}
+
+caption {
+    font-size: small;
+    color: #00000080!important;
+}
