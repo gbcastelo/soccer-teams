@@ -15,15 +15,21 @@ class Player extends Model
         $this->goalkeeper = $attributes->goleiro;
 
         if ($this->save()) {
-            $data['success'] = true;
-            $data['message'] = 'Cadasto realizado com sucesso!';
-
-            return json_encode($data);
+            return redirect()->route('home')->with('success_insert', 'Jogador cadastrado com sucesso!');
         }
+        return redirect()->route('home')->with('error_insert', 'Erro ao cadastrar jogador!');
+    }
 
-        $data['success'] = false;
-        $data['message'] = 'Erro ao salvar o jogador!';
+    public function updatePlayer($attributes) {
+        $player = $this->where('id', $attributes->id)->first();
 
-        return json_encode($data);
+        $player->name = $attributes->nome;
+        $player->level = $attributes->level;
+        $player->goalkeeper = $attributes->goleiro;
+
+        if ($player->save()) {
+            return redirect()->route('home')->with('success_edit', 'Jogador editado com sucesso!');
+        }
+        return redirect()->route('home')->with('error_edit', 'Erro ao editar jogador!');
     }
 }

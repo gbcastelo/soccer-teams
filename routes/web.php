@@ -18,8 +18,4 @@ Route::get('/', function () {
     return view('pages.base.home');
 })->name('home');
 
-Route::get('/welcome', function() {
-    return view('pages.base.welcome');
-})->name('welcome');
-
 Route::resource('player', PlayerController::class);

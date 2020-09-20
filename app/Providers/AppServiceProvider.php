@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Player;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -26,5 +27,7 @@ class AppServiceProvider extends ServiceProvider
         if($this->app->environment('production')) {
             \Illuminate\Support\Facades\URL::forceScheme('https');
         }
+
+        view()->share('players', Player::all());
     }
 }

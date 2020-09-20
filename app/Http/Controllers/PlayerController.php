@@ -8,28 +8,6 @@ use App\Models\Player;
 class PlayerController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $players = new Player;
-
-        return $players->all();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('pages.player.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -49,18 +27,20 @@ class PlayerController extends Controller
 
         $player = new Player;
 
-        return $player->savePlayer($request);
+        if ($request->id == null) {
+            return $player->savePlayer($request);
+        }
+        return $player->updatePlayer($request);
     }
 
     /**
-     * Display the specified resource.
+     * Show the form for creating a new resource.
      *
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function create()
     {
-        //
+        return view('pages.player.create');
     }
 
     /**
@@ -71,19 +51,11 @@ class PlayerController extends Controller
      */
     public function edit($id)
     {
-        //
-    }
+        $player = Player::where('id', $id)->first();
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return view('pages.player.edit')->with([
+            'player' => $player
+        ]);
     }
 
     /**
@@ -94,6 +66,6 @@ class PlayerController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Player::where('id', $id)->delete();
     }
 }
