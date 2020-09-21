@@ -32,4 +32,19 @@ class Player extends Model
         }
         return redirect()->route('home')->with('error_edit', 'Erro ao editar jogador!');
     }
+
+    public function confirmOrRetrievePresence($id) {
+        $player = $this->where('id', $id)->first();
+
+        if ($player->confirmed == 1) {
+            $player->confirmed = 0;
+        } else {
+            $player->confirmed = 1;
+        }
+
+        if ($player->save()) {
+            return response('success', 200);
+        }
+        return response('Erro ao confirmar presença!', 500);
+    }
 }

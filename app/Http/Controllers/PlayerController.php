@@ -68,4 +68,16 @@ class PlayerController extends Controller
     {
         return Player::where('id', $id)->delete();
     }
+    /**
+     * Confirm/retrieve player presence.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function confirmOrRetrievePresence($id) {
+        $player = new Player;
+
+        return $player->confirmOrRetrievePresence($id);
+    }
+
 }

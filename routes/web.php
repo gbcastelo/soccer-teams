@@ -18,4 +18,6 @@ Route::get('/', function () {
     return view('pages.base.home');
 })->name('home');
 
+// Player routes
 Route::resource('player', PlayerController::class);
+Route::put('player/{player}/confirmation', [PlayerController::class, 'confirmOrRetrievePresence'])->name('player.confirm');

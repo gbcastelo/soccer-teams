@@ -29,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
         }
 
         view()->share('players', Player::all());
+        view()->share('players_confirmed', Player::where('confirmed', 1)->get());
     }
 }

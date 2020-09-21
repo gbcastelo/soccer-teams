@@ -37,6 +37,22 @@
         });
     </script>
 @endif
+@if (Session::has('success_confirmed'))
+    <script>
+        Swal.fire({
+            title: 'Ocorreu um erro ao editar!',
+            icon: 'error'
+        });
+    </script>
+@endif
+@if (Session::has('error_confirmed'))
+    <script>
+        Swal.fire({
+            title: 'Ocorreu um erro ao editar!',
+            icon: 'error'
+        });
+    </script>
+@endif
 @if ($errors->any())
     <script>
         errors = {!! json_encode($errors->messages()) !!};

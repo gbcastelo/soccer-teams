@@ -17,7 +17,8 @@ class CreatePlayersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 100);
             $table->integer('level');
-            $table->boolean('goalkeeper');
+            $table->boolean('goalkeeper')->default('0');
+            $table->boolean('confirmed')->default('0');
             $table->softDeletes('deleted_at', 0);
             $table->timestamps();
         });
