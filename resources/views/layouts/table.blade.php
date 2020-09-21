@@ -21,7 +21,7 @@
                     </td>
                     <td>
                         <a href="{{route('player.edit', $player->id)}}" class="btn btn-outline-dark w-button" title="Editar informações do jogador"><i class="fas fa-edit"></i></a>
-                        <a id="button-delete" data-id="{{$player->id}}" class="btn btn-outline-dark w-button" title="Deletar jogador"><i class="fas fa-trash-alt"></i></a>
+                        <a id="button-delete" data-id="{{$player->id}}" class="btn btn-outline-dark w-button mt-1 mt-md-0" title="Deletar jogador"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             @endforeach
