@@ -1,6 +1,6 @@
 <div class="container mt-5">
     <table id="main-table" class="table table-hover">
-        <caption>Número de jogadores confirmados: {{count($players_confirmed)}} ( <i class="fas fa-thumbs-up"></i> )</caption>
+        <caption>Número total de jogadores confirmados: {{count($players_confirmed)}} ( <i class="fas fa-thumbs-up"></i> )</caption>
         <thead>
             <tr class="table-warning"></tr>
                 <th scope="col">Jogador</th>
@@ -57,7 +57,7 @@ $(document).on('click', '#button-delete', function(event) {
         text: "Isso excluirá o cadastro permanentemente!",
         icon: 'warning',
         showCancelButton: true,
-        confirmButtonColor: '#3085d6',
+        confirmButtonColor: '#ffc107',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Deletar',
         cancelButtonText: 'Cancelar'

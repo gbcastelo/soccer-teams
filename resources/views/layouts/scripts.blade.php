@@ -9,6 +9,7 @@
     <script>
         Swal.fire({
             title: 'Cadastrado com sucesso!',
+            text: 'Não se esqueça de confirmar a presença!',
             icon: 'success'
         });
     </script>
