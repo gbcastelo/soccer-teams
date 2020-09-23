@@ -4,7 +4,7 @@
     @csrf
     <div class="form-group">
         <label for="player-name">Nome do Jogador</label>
-        <input type="text" class="form-control" value="{{$player->name}}" name="nome" id="player-name" required>
+        <input type="text" class="form-control" value="{{$player->name}}" name="nome" id="player-name" required autofocus>
     </div>
     <div class="form-group">
         <div class="input-group mb-3">
@@ -12,7 +12,7 @@
                 <label class="input-group-text" for="select-level">Nível</label>
             </div>
             <select class="custom-select" id="select-level" name="level" required>
-                <option disabled selected>Escolha...</option>
+                <option disabled selected value="0">Escolha...</option>
                 <option {{$player->level == 1 ? 'selected' : ''}} value="1">1 (Pereba)</option>
                 <option {{$player->level == 2 ? 'selected' : ''}} value="2">2 (Quase lá, pra menos)</option>
                 <option {{$player->level == 3 ? 'selected' : ''}} value="3">3 (Nem bom, nem ruim)</option>

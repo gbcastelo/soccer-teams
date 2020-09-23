@@ -20,8 +20,8 @@
     @endforeach
     <div class="col-md-12">
         <div class="row d-flex justify-content-center">
-            <a id="reset-all" type="button" class="btn btn-outline-dark mr-5" title="Reseta todos os jogadores(Cuidado!)">Resetar</a>
             <a href="{{route('home')}}" type="button" class="btn btn-outline-dark mr-5">Home</a>
+            <a id="reset-all" type="button" class="btn btn-outline-dark mr-5" title="Reseta todos os jogadores(Cuidado!)">Resetar</a>
         </div>
     </div>
 </div>
@@ -45,7 +45,7 @@ $(() => {
                 location.reload(false);
             }
         });
-    })
+    });
 })
 </script>
 @endsection

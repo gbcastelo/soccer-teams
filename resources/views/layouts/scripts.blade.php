@@ -57,14 +57,15 @@
 @if ($errors->any())
     <script>
         errors = {!! json_encode($errors->messages()) !!};
-            out = '';
-            for (var p in errors) {
-            out += errors[p] + ' \n' ;
+            outText = '';
+            for (var message in errors) {
+                outText += errors[message];
+                outText += '<br>'
             }
-        Swal.fire({
-            title: 'Erro!',
-            text : out,
-            icon: 'error',
-        });
+        Swal.fire(
+            'Erro!',
+            outText,
+            'error',
+        );
     </script>
 @endif

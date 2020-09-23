@@ -4,7 +4,7 @@
     @csrf
     <div class="form-group">
         <label for="team-size">Quantos times serão montados?</label>
-        <input type="number" class="form-control" min="2" name="times" id="team-size" required>
+        <input type="number" class="form-control" min="2" name="times" id="team-size" required autofocus>
         <p><small>Goleiros confirmados: {{count($goalkeepers)}}</small></p>
     </div>
     <div class="form-group" id="player-count-div">
@@ -47,8 +47,6 @@ $(() => {
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $(location).attr('href', "{{route('player.create')}}");
-                    } else {
-                        location.reload(false);
                     }
                 });
             }

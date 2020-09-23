@@ -29,3 +29,7 @@ caption {
 .w-button {
     width: 2.5rem;
 }
+
+.text-dark {
+    text-decoration: underline!important;
+}

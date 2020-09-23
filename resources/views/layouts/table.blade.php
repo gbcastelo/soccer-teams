@@ -1,6 +1,7 @@
 <div class="container mt-5">
     <table id="main-table" class="table table-hover">
         <caption>Número total de jogadores confirmados: {{count($players_confirmed)}} ( <i class="fas fa-thumbs-up"></i> )</caption>
+        <caption>Deseja excluir todos os registros? <a id="reset-all" class="text-dark" href="{{route('team.reset')}}">Clique aqui</a></caption>
         <thead>
             <tr class="table-warning"></tr>
                 <th scope="col">Jogador</th>
@@ -29,6 +30,25 @@
     </table>
 </div>
 <script>
+$(document).on('click', '#reset-all', function(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Cuidado!',
+            text: 'Essa ação deletará todos os jogadores!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#ffc107',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Resetar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $(location).attr('href', "{{route('team.reset')}}");
+            } else {
+                location.reload(false);
+            }
+        });
+    });
 $(document).on('click', '#button-confirm', function(event) {
     event.preventDefault();
     let url = '/player/' + $(this).data('id') + '/confirmation';
@@ -77,7 +97,7 @@ $(document).on('click', '#button-delete', function(event) {
                         'success'
                     ).then((result) => {
                         if (result.isConfirmed) {
-                            location.reload(false);
+                            $(location).attr('href', "{{route('home')}}");
                         }
                     })
                 }
