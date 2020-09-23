@@ -64,7 +64,6 @@ $(document).on('click', '#button-delete', function(event) {
     }).then((result) => {
         if (result.isConfirmed) {
             let url = '/player/' + $(this).data('id');
-            console.log(url);
             $.ajax({
                 type: "delete",
                 url: url,

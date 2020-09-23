@@ -10,7 +10,7 @@
             <div class="col-md-6">
                 <img width="100%" height="100%" src="{{asset('images/player.png')}}" alt="Jogador">
             </div>
-            <div id="content" class="col-md-5 align-items-center d-flex justify-content-center flex-column">
+            <div id="content" class="col-md-6 align-items-center d-flex justify-content-center flex-column">
                 @yield('content')
             </div>
         </div>

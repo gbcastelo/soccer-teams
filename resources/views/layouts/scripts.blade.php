@@ -8,7 +8,7 @@
 @if (Session::has('success_insert'))
     <script>
         Swal.fire({
-            title: 'Cadastrado com sucesso!',
+            title: '{{Session::get('success_insert')}}',
             text: 'Não se esqueça de confirmar a presença!',
             icon: 'success'
         });
@@ -17,7 +17,7 @@
 @if (Session::has('error_insert'))
     <script>
         Swal.fire({
-            title: 'Ocorreu um erro ao salvar!',
+            title: '{{Session::get('error_insert')}}',
             icon: 'error'
         });
     </script>
@@ -25,7 +25,7 @@
 @if (Session::has('success_edit'))
     <script>
         Swal.fire({
-            title: 'Editado com sucesso!',
+            title: '{{Session::get('success_edit')}}',
             icon: 'success'
         });
     </script>
@@ -33,23 +33,23 @@
 @if (Session::has('error_edit'))
     <script>
         Swal.fire({
-            title: 'Ocorreu um erro ao editar!',
+            title: '{{Session::get('error_edit')}}',
             icon: 'error'
         });
     </script>
 @endif
-@if (Session::has('success_confirmed'))
+@if (Session::has('success_reset'))
     <script>
         Swal.fire({
-            title: 'Ocorreu um erro ao editar!',
-            icon: 'error'
+            title: '{{Session::get('success_reset')}}',
+            icon: 'success'
         });
     </script>
 @endif
-@if (Session::has('error_confirmed'))
+@if (Session::has('error_reset'))
     <script>
         Swal.fire({
-            title: 'Ocorreu um erro ao editar!',
+            title: '{{Session::get('error_reset')}}',
             icon: 'error'
         });
     </script>
@@ -59,7 +59,7 @@
         errors = {!! json_encode($errors->messages()) !!};
             out = '';
             for (var p in errors) {
-            out += errors[p] + '\n' ;
+            out += errors[p] + ' \n' ;
             }
         Swal.fire({
             title: 'Erro!',

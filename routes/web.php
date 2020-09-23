@@ -24,4 +24,6 @@ Route::resource('player', PlayerController::class);
 Route::put('player/{player}/confirmation', [PlayerController::class, 'confirmOrRetrievePresence'])->name('player.confirm');
 
 // Team routes
-Route::resource('team', TeamController::class);
+Route::get('team/create', [TeamController::class, 'create'])->name('team.create');
+Route::post('team/sort', [TeamController::class, 'sortTeams'])->name('team.sort');
+Route::get('team/reset', [TeamController::class, 'resetAll'])->name('team.reset');

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<form class="team-create" method="POST" action="{{route('team.store')}}">
+<form class="team-create" method="POST" action="{{route('team.sort')}}">
     @csrf
     <div class="form-group">
         <label for="team-size">Quantos times serão montados?</label>
@@ -15,7 +15,7 @@
     <div class="col-md-12 d-flex justify-content-end p-0">
         <a href="{{route('home')}}" type="button" class="btn btn-link mr-5">Voltar</a>
         <button id="button-sort" type="submit" class="btn btn-warning mb-3 w-50">
-            <span id="button-text">Cadastrar</span>
+            <span id="button-text">Sortear</span>
         </button>
     </div>
 </form>
@@ -48,12 +48,12 @@ $(() => {
                     if (result.isConfirmed) {
                         $(location).attr('href', "{{route('player.create')}}");
                     } else {
-                        location.reload(false)
+                        location.reload(false);
                     }
                 });
             }
         }
-        if (totalGoalkeepers >= teamSize) {
+        if (totalGoalkeepers >= teamSize && teamSize >= 2) {
             $("#player-count-div").show();
             $("#player-count").change(() => {
                 let teamSize = parseInt($("#team-size").val());
@@ -76,6 +76,8 @@ $(() => {
                             $(location).attr('href', "{{route('player.create')}}");
                         }
                     });
+                } else if(playersConfirmed >= playersNeeded) {
+                    $("#button-sort").prop("disabled", false);
                 }
             })
         }
