@@ -13,8 +13,8 @@ class Team extends Model
     public function sortTeams($attributes) {
         $teamsNumber = $attributes->times;
         $playersRequested = $attributes->jogadores;
-        $goalkeepersConfirmed = DB::select(DB::raw("SELECT * FROM soccer.players WHERE confirmed = 1 AND goalkeeper = 1 ORDER BY level ASC"));
-        $playersConfirmed = DB::select(DB::raw("SELECT * FROM soccer.players WHERE confirmed = 1 AND goalkeeper = 0 ORDER BY level DESC"));
+        $goalkeepersConfirmed = DB::select(DB::raw("SELECT * FROM players WHERE confirmed = 1 AND goalkeeper = 1 ORDER BY level ASC"));
+        $playersConfirmed = DB::select(DB::raw("SELECT * FROM players WHERE confirmed = 1 AND goalkeeper = 0 ORDER BY level DESC"));
 
         $teamsSorted = [];
         $index = 0;
