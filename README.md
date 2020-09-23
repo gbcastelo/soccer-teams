@@ -7,6 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
+## For this project
+First you'll need to have installed Laravel 8 and Mysql 5.7 on your machine, there is multiples tutorials on the web for this, and should not be hard for you to find. Then you clone this repo on your machine and on terminal run ```composer install``` for installing dependencies, afeter this, take a look at the .env.example archive for the project base structure, you'll need the MySQL structure that is on this file for your .env, you might need to readjust the username and password, but leave the rest, mainly the database name, that will be needed for the migrations, that is our next step, on terminal again, run ```php artisan migrate``` and the MySQL structure will be created, after this, run ```php artisan serve```, and this should put the project on your localhost on port 8000, if not, that might be a problem with the app key, if so, run on terminal ```php artisan key:generate```, and now you can fully access this project and it's awesomeness.
+
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
